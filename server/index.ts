@@ -153,7 +153,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(distPath));
 
   let indexTemplate: string | null = null;
-  app.get("*", (req, res) => {
+  app.get("/{*splat}", (req, res) => {
     if (indexTemplate === null) {
       indexTemplate = fs.readFileSync(path.join(distPath, "index.html"), "utf-8");
     }
